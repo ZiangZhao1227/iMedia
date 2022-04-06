@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TopbarContainer = styled.div`
   height: 60px;
   width: 100%;
-  background-color: #1877;
+  background-color: #17BEBB;
   display: flex;
   align-items: center;
   position: sticky;
