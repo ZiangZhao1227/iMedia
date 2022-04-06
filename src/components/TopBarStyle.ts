@@ -53,7 +53,7 @@ export const TopbarLinks = styled.div``;
 
 export const TopbarLink = styled.span`
   margin-right: 10px;
-  font-size: 20px;
+  font-size: 17px;
   cursor: pointer;
 `;
 
