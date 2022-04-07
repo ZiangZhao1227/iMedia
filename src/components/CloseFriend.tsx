@@ -1,10 +1,10 @@
-import { useScrollTrigger } from "@material-ui/core";
 import {
   SidebarFriendImage,
   SidebarFriendName,
   SidebarFriend,
 } from "./CloseFriendStyle";
 import { UserProps } from "./OnlineFriend";
+
 const CloseFriend = ({ user }: UserProps) => {
   return (
     <SidebarFriend>
