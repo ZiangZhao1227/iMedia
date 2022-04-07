@@ -40,3 +40,49 @@ export const RightbarFriendList = styled.ul`
   list-style: none;
 `;
 
+export const RightbarHeader = styled.h4`
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 500;
+`;
+
+export const RightbarInfo = styled.div`
+  margin-bottom: 30px;
+`;
+
+export const RightbarInfoItem = styled.div`
+  margin-bottom: 10px;
+`;
+
+export const RightbarInfoKey = styled.span`
+  font-weight: 500;
+  margin-right: 15px;
+  color: grey;
+`;
+
+export const RightbarInfoValue = styled.span`
+  font-weight: 300;
+`;
+
+export const RightbarFollowings = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+export const RightbarFollowing = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+`;
+
+export const RightbarFollowingImage = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+`;
+
+export const RightbarFollowingName = styled.span``;
