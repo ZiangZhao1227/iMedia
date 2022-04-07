@@ -20,6 +20,7 @@ import {
   PostCommentText,
 } from "./PostStyle";
 import { Users } from "../data";
+import { useState } from "react";
 
 interface PostProps {
   post: {
@@ -34,6 +35,13 @@ interface PostProps {
 }
 
 const Post = ({ post }: PostProps) => {
+  const [like, setLike] = useState(post.like);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const likeHandler = () => {
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
   return (
     <PostContainer>
       <PostWrapper>
@@ -63,12 +71,12 @@ const Post = ({ post }: PostProps) => {
         </PostCenter>
         <PostBottom>
           <PostBottomLeft>
-            <LikeIcon src="./assets/like.png"></LikeIcon>
-            <LikeIcon src="./assets/heart.png"></LikeIcon>
-            <PostLikeCounter>{post.like}</PostLikeCounter>
+            <LikeIcon src="./assets/like.png" onClick={likeHandler}></LikeIcon>
+            <LikeIcon src="./assets/heart.png" onClick={likeHandler}></LikeIcon>
+            <PostLikeCounter>{like} people like it</PostLikeCounter>
           </PostBottomLeft>
           <PostBottomRight>
-            <PostCommentText>{post.comment}</PostCommentText>
+            <PostCommentText>{post.comment} comments</PostCommentText>
           </PostBottomRight>
         </PostBottom>
       </PostWrapper>
