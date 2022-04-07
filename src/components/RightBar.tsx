@@ -7,12 +7,9 @@ import {
   RightbarFriendList,
   RightbarTitle,
   RightbarWrapper,
-  RightbarFriend,
-  RightbarProfileImageContainer,
-  RightbarProfileImage,
-  RightbarOnline,
-  RightbarUsername,
 } from "./RightBarStyle";
+import { Users } from "../data";
+import OnlineFriend from "./OnlineFriend";
 
 const RightBar = () => {
   return (
@@ -27,41 +24,9 @@ const RightBar = () => {
         <RightbarAd src="./assets/ad.jpg"></RightbarAd>
         <RightbarTitle>Online Friends</RightbarTitle>
         <RightbarFriendList>
-          <RightbarFriend>
-            <RightbarProfileImageContainer>
-              <RightbarProfileImage src="./assets/person/3.jpeg"></RightbarProfileImage>
-              <RightbarOnline></RightbarOnline>
-            </RightbarProfileImageContainer>
-            <RightbarUsername>John Carter</RightbarUsername>
-          </RightbarFriend>
-          <RightbarFriend>
-            <RightbarProfileImageContainer>
-              <RightbarProfileImage src="./assets/person/3.jpeg"></RightbarProfileImage>
-              <RightbarOnline></RightbarOnline>
-            </RightbarProfileImageContainer>
-            <RightbarUsername>John Carter</RightbarUsername>
-          </RightbarFriend>
-          <RightbarFriend>
-            <RightbarProfileImageContainer>
-              <RightbarProfileImage src="./assets/person/3.jpeg"></RightbarProfileImage>
-              <RightbarOnline></RightbarOnline>
-            </RightbarProfileImageContainer>
-            <RightbarUsername>John Carter</RightbarUsername>
-          </RightbarFriend>
-          <RightbarFriend>
-            <RightbarProfileImageContainer>
-              <RightbarProfileImage src="./assets/person/3.jpeg"></RightbarProfileImage>
-              <RightbarOnline></RightbarOnline>
-            </RightbarProfileImageContainer>
-            <RightbarUsername>John Carter</RightbarUsername>
-          </RightbarFriend>
-          <RightbarFriend>
-            <RightbarProfileImageContainer>
-              <RightbarProfileImage src="./assets/person/3.jpeg"></RightbarProfileImage>
-              <RightbarOnline></RightbarOnline>
-            </RightbarProfileImageContainer>
-            <RightbarUsername>John Carter</RightbarUsername>
-          </RightbarFriend>
+          {Users.map((userItem) => (
+            <OnlineFriend user={userItem} key={userItem.id} />
+          ))}
         </RightbarFriendList>
       </RightbarWrapper>
     </RightbarContainer>
