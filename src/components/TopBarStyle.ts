@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const TopbarContainer = styled.div`
   height: 60px;
   width: 100%;
-  background-color: #17BEBB;
+  background-color: #a44cd3;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 1;
 `;
 
 export const TopbarLeft = styled.div`
@@ -29,9 +30,10 @@ export const TopbarRight = styled.div`
 export const Logo = styled.span`
   font-size: 30px;
   margin-left: 20px;
-  font-weight: bold;
+  font-weight: 400;
   color: white;
   cursor: pointer;
+  font-family: "Shizuru", cursive;
 `;
 
 export const SearchBar = styled.div`
