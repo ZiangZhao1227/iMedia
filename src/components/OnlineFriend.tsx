@@ -6,7 +6,7 @@ import {
   RightbarUsername,
 } from "./OnlineFriendStyle";
 
-interface UserProps {
+export interface UserProps {
   user: {
     id: number;
     profilePicture: string;

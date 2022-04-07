@@ -6,10 +6,7 @@ import {
   SidebarListItemText,
   SidebarButton,
   SidebarHr,
-  SidebarFriend,
   SidebarFriendList,
-  SidebarFriendImage,
-  SidebarFriendName,
 } from "./SideBarStyle";
 import {
   RssFeed,
@@ -22,6 +19,8 @@ import {
   Event,
   School,
 } from "@material-ui/icons";
+import CloseFriend from "./CloseFriend";
+import { Users } from "../data";
 
 const SideBar = () => {
   return (
@@ -68,38 +67,9 @@ const SideBar = () => {
         <SidebarButton>Show More</SidebarButton>
         <SidebarHr />
         <SidebarFriendList>
-          <SidebarFriend>
-            <SidebarFriendImage src="./assets/person/2.jpeg"></SidebarFriendImage>
-            <SidebarFriendName>John Doe</SidebarFriendName>
-          </SidebarFriend>
-          <SidebarFriend>
-            <SidebarFriendImage src="./assets/person/2.jpeg"></SidebarFriendImage>
-            <SidebarFriendName>John Doe</SidebarFriendName>
-          </SidebarFriend>
-          <SidebarFriend>
-            <SidebarFriendImage src="./assets/person/2.jpeg"></SidebarFriendImage>
-            <SidebarFriendName>John Doe</SidebarFriendName>
-          </SidebarFriend>
-          <SidebarFriend>
-            <SidebarFriendImage src="./assets/person/2.jpeg"></SidebarFriendImage>
-            <SidebarFriendName>John Doe</SidebarFriendName>
-          </SidebarFriend>
-          <SidebarFriend>
-            <SidebarFriendImage src="./assets/person/2.jpeg"></SidebarFriendImage>
-            <SidebarFriendName>John Doe</SidebarFriendName>
-          </SidebarFriend>
-          <SidebarFriend>
-            <SidebarFriendImage src="./assets/person/2.jpeg"></SidebarFriendImage>
-            <SidebarFriendName>John Doe</SidebarFriendName>
-          </SidebarFriend>
-          <SidebarFriend>
-            <SidebarFriendImage src="./assets/person/2.jpeg"></SidebarFriendImage>
-            <SidebarFriendName>John Doe</SidebarFriendName>
-          </SidebarFriend>
-          <SidebarFriend>
-            <SidebarFriendImage src="./assets/person/2.jpeg"></SidebarFriendImage>
-            <SidebarFriendName>John Doe</SidebarFriendName>
-          </SidebarFriend>
+          {Users.map((userItem) => (
+            <CloseFriend key={userItem.id} user={userItem} />
+          ))}
         </SidebarFriendList>
       </SidebarWrapper>
     </SidebarContainer>
