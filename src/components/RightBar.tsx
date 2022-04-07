@@ -24,7 +24,7 @@ const RightBar = () => {
             <b>Pola Foster</b> and <b>3 other friends</b> have a birthday today
           </BirthdayText>
         </BirthdayContainer>
-        <RightbarAd src="./assets/ad.png"></RightbarAd>
+        <RightbarAd src="./assets/ad.jpg"></RightbarAd>
         <RightbarTitle>Online Friends</RightbarTitle>
         <RightbarFriendList>
           <RightbarFriend>
