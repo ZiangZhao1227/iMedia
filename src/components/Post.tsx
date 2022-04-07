@@ -19,6 +19,7 @@ import {
   PostLikeCounter,
   PostCommentText,
 } from "./PostStyle";
+import { Users } from "../data";
 
 interface PostProps {
   post: {
@@ -38,8 +39,18 @@ const Post = ({ post }: PostProps) => {
       <PostWrapper>
         <PostTop>
           <PostTopLeft>
-            <PostProfileImage src="./assets/person/10.jpeg"></PostProfileImage>
-            <PostUsername>Test User 1</PostUsername>
+            <PostProfileImage
+              src={
+                Users.filter((userItem) => userItem.id === post.userId)[0]
+                  .profilePicture
+              }
+            ></PostProfileImage>
+            <PostUsername>
+              {
+                Users.filter((userItem) => userItem.id === post.userId)[0]
+                  .username
+              }
+            </PostUsername>
             <PostDate>{post.date}</PostDate>
           </PostTopLeft>
           <PostTopRight>
