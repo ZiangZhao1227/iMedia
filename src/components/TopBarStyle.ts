@@ -47,7 +47,7 @@ export const SearchBar = styled.div`
 
 export const SearchInput = styled.input`
   border: none;
-  width: 95%;
+  width: 80%;
   outline: none;
 `;
 
