@@ -8,6 +8,9 @@ const Feed = () => {
       <FeedWrapper>
         <Share />
         <Post />
+        <Post />
+        <Post />
+        <Post />
       </FeedWrapper>
     </FeedContainer>
   );
