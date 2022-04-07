@@ -20,7 +20,19 @@ import {
   PostCommentText,
 } from "./PostStyle";
 
-const Post = () => {
+interface PostProps {
+  post: {
+    id: number;
+    desc?: string;
+    photo: string;
+    date: string;
+    userId: number;
+    like: number;
+    comment: number;
+  };
+}
+
+const Post = ({ post }: PostProps) => {
   return (
     <PostContainer>
       <PostWrapper>
@@ -28,24 +40,24 @@ const Post = () => {
           <PostTopLeft>
             <PostProfileImage src="./assets/person/10.jpeg"></PostProfileImage>
             <PostUsername>Test User 1</PostUsername>
-            <PostDate>5 mins ago</PostDate>
+            <PostDate>{post.date}</PostDate>
           </PostTopLeft>
           <PostTopRight>
             <MoreVert />
           </PostTopRight>
         </PostTop>
         <PostCenter>
-          <PostText>Hey! Its my first post</PostText>
-          <PostImge src="./assets/post/1.jpeg"></PostImge>
+          <PostText>{post.desc}</PostText>
+          <PostImge src={post.photo}></PostImge>
         </PostCenter>
         <PostBottom>
           <PostBottomLeft>
             <LikeIcon src="./assets/like.png"></LikeIcon>
             <LikeIcon src="./assets/heart.png"></LikeIcon>
-            <PostLikeCounter>32 people liked it</PostLikeCounter>
+            <PostLikeCounter>{post.like}</PostLikeCounter>
           </PostBottomLeft>
           <PostBottomRight>
-            <PostCommentText>9 comments</PostCommentText>
+            <PostCommentText>{post.comment}</PostCommentText>
           </PostBottomRight>
         </PostBottom>
       </PostWrapper>
