@@ -1,4 +1,4 @@
-import { MoreVert, Public } from "@material-ui/icons";
+import { MoreVert } from "@material-ui/icons";
 
 import {
   PostBottom,
