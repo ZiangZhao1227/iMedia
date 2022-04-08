@@ -1,4 +1,4 @@
-import { MoreVert } from "@material-ui/icons";
+import { MoreVert, Public } from "@material-ui/icons";
 
 import {
   PostBottom,
@@ -37,6 +37,7 @@ interface PostProps {
 const Post = ({ post }: PostProps) => {
   const [like, setLike] = useState(post.like);
   const [isLiked, setIsLiked] = useState(false);
+  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const likeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
@@ -67,12 +68,18 @@ const Post = ({ post }: PostProps) => {
         </PostTop>
         <PostCenter>
           <PostText>{post.desc}</PostText>
-          <PostImge src={post.photo}></PostImge>
+          <PostImge src={PublicFolder + post.photo}></PostImge>
         </PostCenter>
         <PostBottom>
           <PostBottomLeft>
-            <LikeIcon src="./assets/like.png" onClick={likeHandler}></LikeIcon>
-            <LikeIcon src="./assets/heart.png" onClick={likeHandler}></LikeIcon>
+            <LikeIcon
+              src={`${PublicFolder}like.png`}
+              onClick={likeHandler}
+            ></LikeIcon>
+            <LikeIcon
+              src={`${PublicFolder}heart.png`}
+              onClick={likeHandler}
+            ></LikeIcon>
             <PostLikeCounter>{like} people like it</PostLikeCounter>
           </PostBottomLeft>
           <PostBottomRight>

@@ -23,16 +23,17 @@ import { Users } from "../data";
 import OnlineFriend from "./OnlineFriend";
 
 const RightBar = ({ profile }: any) => {
+  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const HomeRightbar = () => {
     return (
       <Fragment>
         <BirthdayContainer>
-          <BirthdayImage src="./assets/gift.png"></BirthdayImage>
+          <BirthdayImage src="./gift.png"></BirthdayImage>
           <BirthdayText>
             <b>Pola Foster</b> and <b>3 other friends</b> have a birthday today
           </BirthdayText>
         </BirthdayContainer>
-        <RightbarAd src="./assets/ad.jpg"></RightbarAd>
+        <RightbarAd src="./ad.jpg"></RightbarAd>
         <RightbarTitle>Online Friends</RightbarTitle>
         <RightbarFriendList>
           {Users.map((userItem) => (
@@ -64,27 +65,39 @@ const RightBar = ({ profile }: any) => {
         <RightbarHeader>User Friends</RightbarHeader>
         <RightbarFollowings>
           <RightbarFollowing>
-            <RightbarFollowingImage src="./assets/person/1.jpeg"></RightbarFollowingImage>
+            <RightbarFollowingImage
+              src={`${PublicFolder}person/1.jpeg`}
+            ></RightbarFollowingImage>
             <RightbarFollowingName>John Doe</RightbarFollowingName>
           </RightbarFollowing>
           <RightbarFollowing>
-            <RightbarFollowingImage src="./assets/person/2.jpeg"></RightbarFollowingImage>
+            <RightbarFollowingImage
+              src={`${PublicFolder}person/2.jpeg`}
+            ></RightbarFollowingImage>
             <RightbarFollowingName>John Doe</RightbarFollowingName>
           </RightbarFollowing>
           <RightbarFollowing>
-            <RightbarFollowingImage src="./assets/person/3.jpeg"></RightbarFollowingImage>
+            <RightbarFollowingImage
+              src={`${PublicFolder}person/3.jpeg`}
+            ></RightbarFollowingImage>
             <RightbarFollowingName>John Doe</RightbarFollowingName>
           </RightbarFollowing>
           <RightbarFollowing>
-            <RightbarFollowingImage src="./assets/person/4.jpeg"></RightbarFollowingImage>
+            <RightbarFollowingImage
+              src={`${PublicFolder}person/4.jpeg`}
+            ></RightbarFollowingImage>
             <RightbarFollowingName>John Doe</RightbarFollowingName>
           </RightbarFollowing>
           <RightbarFollowing>
-            <RightbarFollowingImage src="./assets/person/5.jpeg"></RightbarFollowingImage>
+            <RightbarFollowingImage
+              src={`${PublicFolder}person/8.jpeg`}
+            ></RightbarFollowingImage>
             <RightbarFollowingName>John Doe</RightbarFollowingName>
           </RightbarFollowing>
           <RightbarFollowing>
-            <RightbarFollowingImage src="./assets/person/6.jpeg"></RightbarFollowingImage>
+            <RightbarFollowingImage
+              src={`${PublicFolder}person/9.jpeg`}
+            ></RightbarFollowingImage>
             <RightbarFollowingName>John Doe</RightbarFollowingName>
           </RightbarFollowing>
         </RightbarFollowings>

@@ -15,10 +15,13 @@ export interface UserProps {
 }
 
 const OnlineFriend = ({ user }: UserProps) => {
+  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <RightbarFriend>
       <RightbarProfileImageContainer>
-        <RightbarProfileImage src={user.profilePicture}></RightbarProfileImage>
+        <RightbarProfileImage
+          src={PublicFolder + user.profilePicture}
+        ></RightbarProfileImage>
         <RightbarOnline></RightbarOnline>
       </RightbarProfileImageContainer>
       <RightbarUsername>{user.username}</RightbarUsername>

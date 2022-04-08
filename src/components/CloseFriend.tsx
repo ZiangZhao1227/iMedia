@@ -6,9 +6,10 @@ import {
 import { UserProps } from "./OnlineFriend";
 
 const CloseFriend = ({ user }: UserProps) => {
+  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <SidebarFriend>
-      <SidebarFriendImage src={user.profilePicture}></SidebarFriendImage>
+      <SidebarFriendImage src={PublicFolder + user.profilePicture}></SidebarFriendImage>
       <SidebarFriendName>{user.username}</SidebarFriendName>
     </SidebarFriend>
   );

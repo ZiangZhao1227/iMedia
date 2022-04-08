@@ -18,6 +18,7 @@ import {
 } from "./ProfileStyle";
 
 const Profile = () => {
+  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <Fragment>
       <TopBar />
@@ -26,17 +27,25 @@ const Profile = () => {
         <ProfileRight>
           <ProfileRightTop>
             <ProfileCover>
-              <ProfileCoverImage src="./assets/post/3.jpeg"></ProfileCoverImage>
-              <ProfileUserImage src="./assets/person/profile.png"></ProfileUserImage>
+              <ProfileCoverImage
+                src={`${PublicFolder}post/3.jpeg`}
+              ></ProfileCoverImage>
+              <ProfileUserImage
+                src={`${PublicFolder}person/4.jpeg`}
+              ></ProfileUserImage>
             </ProfileCover>
             <ProfileInfo>
-                <ProfileInfoName>TEST USER</ProfileInfoName>
-                <ProfileInfoDesc>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae veniam placeat esse voluptates mollitia, aperiam id deserunt laborum vero. Labore?</ProfileInfoDesc>
+              <ProfileInfoName>TEST USER</ProfileInfoName>
+              <ProfileInfoDesc>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
+                veniam placeat esse voluptates mollitia, aperiam id deserunt
+                laborum vero. Labore?
+              </ProfileInfoDesc>
             </ProfileInfo>
           </ProfileRightTop>
           <ProfileRightBottom>
             <Feed />
-            <RightBar profile/>
+            <RightBar profile />
           </ProfileRightBottom>
         </ProfileRight>
       </ProfileContainer>
