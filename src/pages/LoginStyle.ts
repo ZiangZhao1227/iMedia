@@ -41,7 +41,7 @@ export const LoginDesc = styled.span`
   font-size: 24px;
 `;
 
-export const LoginBox = styled.div`
+export const LoginBox = styled.form`
   height: 300px;
   padding: 20px;
   background-color: white;

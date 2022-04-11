@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import {
   LoginContainer,
   LoginDesc,
@@ -13,6 +15,11 @@ import {
 } from "./LoginStyle";
 
 const Login = () => {
+  const email = useRef<any>();
+  const password = useRef<any>();
+  const handleClick = (e: any) => {
+    e.preventDefault();
+  };
   return (
     <LoginContainer>
       <LoginWrapper>
@@ -23,9 +30,20 @@ const Login = () => {
           </LoginDesc>
         </LoginLeft>
         <LoginRight>
-          <LoginBox>
-            <LoginInput placeholder="Email"></LoginInput>
-            <LoginInput placeholder="Password"></LoginInput>
+          <LoginBox onSubmit={handleClick}>
+            <LoginInput
+              placeholder="Email"
+              required
+              type="email"
+              ref={email}
+            ></LoginInput>
+            <LoginInput
+              placeholder="Password"
+              required
+              minLength={6}
+              type="password"
+              ref={password}
+            ></LoginInput>
             <LoginButton>Log in</LoginButton>
             <LoginForgot>Forgot Password?</LoginForgot>
             <LoginRegisterButton>Create a New Account</LoginRegisterButton>
