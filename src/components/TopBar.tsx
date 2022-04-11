@@ -13,6 +13,7 @@ import {
   TopbarIconBadge,
   TopbarImage,
 } from "./TopBarStyle";
+import { Link } from "react-router-dom";
 
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 
@@ -20,7 +21,9 @@ const TopBar = () => {
   return (
     <TopbarContainer>
       <TopbarLeft>
-        <Logo>iMedia</Logo>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Logo>iMedia</Logo>
+        </Link>
       </TopbarLeft>
       <TopbarCenter>
         <SearchBar>

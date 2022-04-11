@@ -22,7 +22,7 @@ import {
 import { Users } from "../data";
 import OnlineFriend from "./OnlineFriend";
 
-const RightBar = ({ profile }: any) => {
+const RightBar = ({ user }: any) => {
   const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const HomeRightbar = () => {
     return (
@@ -51,15 +51,21 @@ const RightBar = ({ profile }: any) => {
         <RightbarInfo>
           <RightbarInfoItem>
             <RightbarInfoKey>City: </RightbarInfoKey>
-            <RightbarInfoValue>New York</RightbarInfoValue>
+            <RightbarInfoValue>{user.city}</RightbarInfoValue>
           </RightbarInfoItem>
           <RightbarInfoItem>
             <RightbarInfoKey>From: </RightbarInfoKey>
-            <RightbarInfoValue>China</RightbarInfoValue>
+            <RightbarInfoValue>{user.from}</RightbarInfoValue>
           </RightbarInfoItem>
           <RightbarInfoItem>
             <RightbarInfoKey>Relationship: </RightbarInfoKey>
-            <RightbarInfoValue>Single</RightbarInfoValue>
+            <RightbarInfoValue>
+              {user.relationship === 1
+                ? "Single"
+                : user.relationship === 1
+                ? "Married"
+                : "-"}
+            </RightbarInfoValue>
           </RightbarInfoItem>
         </RightbarInfo>
         <RightbarHeader>User Friends</RightbarHeader>
@@ -108,7 +114,7 @@ const RightBar = ({ profile }: any) => {
   return (
     <RightbarContainer>
       <RightbarWrapper>
-        {profile ? <ProfileRightbar /> : <HomeRightbar />}
+        {user ? <ProfileRightbar /> : <HomeRightbar />}
       </RightbarWrapper>
     </RightbarContainer>
   );

@@ -1,4 +1,6 @@
-import { Fragment } from "react";
+import axios from "axios";
+import { Fragment, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import Feed from "../components/Feed";
 import RightBar from "../components/RightBar";
@@ -16,9 +18,19 @@ import {
   ProfileRightTop,
   ProfileUserImage,
 } from "./ProfileStyle";
+import { BASE_URL } from "../api/baseUrl";
 
 const Profile = () => {
   const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [user, setUser] = useState<any>({});
+  const { username } = useParams();
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`${BASE_URL}users?username=${username}`);
+      setUser(res.data.userInfo);
+    };
+    fetchUser();
+  }, [username]);
   return (
     <Fragment>
       <TopBar />
@@ -28,24 +40,22 @@ const Profile = () => {
           <ProfileRightTop>
             <ProfileCover>
               <ProfileCoverImage
-                src={`${PublicFolder}post/3.jpeg`}
+                src={user.coverPicture || PublicFolder + "person/noCover.jpeg"}
               ></ProfileCoverImage>
               <ProfileUserImage
-                src={`${PublicFolder}person/4.jpeg`}
+                src={
+                  user.profilePicture || PublicFolder + "person/noAvatar.png"
+                }
               ></ProfileUserImage>
             </ProfileCover>
             <ProfileInfo>
-              <ProfileInfoName>TEST USER</ProfileInfoName>
-              <ProfileInfoDesc>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-                veniam placeat esse voluptates mollitia, aperiam id deserunt
-                laborum vero. Labore?
-              </ProfileInfoDesc>
+              <ProfileInfoName>{user.username}</ProfileInfoName>
+              <ProfileInfoDesc>{user.desc}</ProfileInfoDesc>
             </ProfileInfo>
           </ProfileRightTop>
           <ProfileRightBottom>
-            <Feed />
-            <RightBar profile />
+            <Feed username={username} />
+            <RightBar user={user} />
           </ProfileRightBottom>
         </ProfileRight>
       </ProfileContainer>

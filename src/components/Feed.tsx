@@ -6,18 +6,18 @@ import Post from "./Post";
 import Share from "./Share";
 import { BASE_URL } from "../api/baseUrl";
 
-const Feed = () => {
+const Feed = ({ username }: any) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get(
-        `${BASE_URL}posts/timeline/624c748ea9fc5c5d8cd344d4`
-      );
+      const res = username
+        ? await axios.get(`${BASE_URL}posts/profile/${username}`)
+        : await axios.get(`${BASE_URL}posts/timeline/624c748ea9fc5c5d8cd344d4`);
       setPosts(res.data);
     };
     fetchPosts();
-  }, []);
+  }, [username]);
 
   return (
     <FeedContainer>
