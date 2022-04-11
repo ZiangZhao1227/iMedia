@@ -28,12 +28,12 @@ const RightBar = ({ user }: any) => {
     return (
       <Fragment>
         <BirthdayContainer>
-          <BirthdayImage src="./gift.png"></BirthdayImage>
+          <BirthdayImage src="assets/gift.png"></BirthdayImage>
           <BirthdayText>
             <b>Pola Foster</b> and <b>3 other friends</b> have a birthday today
           </BirthdayText>
         </BirthdayContainer>
-        <RightbarAd src="./ad.jpg"></RightbarAd>
+        <RightbarAd src="assets/ad.jpg"></RightbarAd>
         <RightbarTitle>Online Friends</RightbarTitle>
         <RightbarFriendList>
           {Users.map((userItem) => (

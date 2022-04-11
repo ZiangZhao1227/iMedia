@@ -20,7 +20,7 @@ const Share = () => {
       <ShareWrapper>
         <ShareTop>
           <ShareProfileImage src="./assets/person/1.jpeg"></ShareProfileImage>
-          <ShareInput placeholder="What's in your mind Safak?"></ShareInput>
+          <ShareInput placeholder="Anything interesting to share?"></ShareInput>
         </ShareTop>
         <ShareHr />
         <ShareBottom>
