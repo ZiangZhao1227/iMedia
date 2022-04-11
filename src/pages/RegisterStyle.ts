@@ -41,7 +41,7 @@ export const RegisterDesc = styled.span`
   font-size: 24px;
 `;
 
-export const RegisterBox = styled.div`
+export const RegisterBox = styled.form`
   height: 400px;
   padding: 20px;
   background-color: white;

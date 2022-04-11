@@ -71,6 +71,9 @@ export const LoginButton = styled.button`
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 export const LoginRegisterButton = styled.button`
