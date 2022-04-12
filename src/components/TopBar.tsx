@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom";
+import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import { useContext } from "react";
+
 import {
   TopbarContainer,
   TopbarCenter,
@@ -13,11 +17,11 @@ import {
   TopbarIconBadge,
   TopbarImage,
 } from "./TopBarStyle";
-import { Link } from "react-router-dom";
-
-import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import { AuthContext } from "../context/AuthContext";
 
 const TopBar = () => {
+  const { user } = useContext(AuthContext);
+  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <TopbarContainer>
       <TopbarLeft>
@@ -50,7 +54,15 @@ const TopBar = () => {
             <TopbarIconBadge>3</TopbarIconBadge>
           </TopbarIconItem>
         </TopbarIcons>
-        <TopbarImage src="./assets/person/profile.png"></TopbarImage>
+        <Link to={`/profile/${user.username}`}>
+          <TopbarImage
+            src={
+              user.profilePicture
+                ? PublicFolder + user.profilePicture
+                : PublicFolder + "person/noAvatar.png"
+            }
+          ></TopbarImage>
+        </Link>
       </TopbarRight>
     </TopbarContainer>
   );

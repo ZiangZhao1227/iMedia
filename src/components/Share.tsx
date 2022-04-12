@@ -1,4 +1,5 @@
 import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
+import { useContext } from "react";
 
 import {
   ShareContainer,
@@ -13,13 +14,22 @@ import {
   ShareOptionText,
   ShareButton,
 } from "./ShareStyle";
+import { AuthContext } from "../context/AuthContext";
 
 const Share = () => {
+  const { user } = useContext(AuthContext);
+  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <ShareContainer>
       <ShareWrapper>
         <ShareTop>
-          <ShareProfileImage src="./assets/person/1.jpeg"></ShareProfileImage>
+          <ShareProfileImage
+            src={
+              user.profilePicture
+                ? PublicFolder + user.profilePicture
+                : PublicFolder + "person/noAvatar.png"
+            }
+          ></ShareProfileImage>
           <ShareInput placeholder="Anything interesting to share?"></ShareInput>
         </ShareTop>
         <ShareHr />

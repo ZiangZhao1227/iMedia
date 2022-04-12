@@ -65,7 +65,9 @@ const Post = ({ post }: PostProps) => {
             <Link to={`/profile/${user.username}`}>
               <PostProfileImage
                 src={
-                  user.profilePicture || PublicFolder + "person/noAvatar.png"
+                  user.profilePicture
+                    ? PublicFolder + user.profilePicture
+                    : PublicFolder + "person/noAvatar.png"
                 }
               ></PostProfileImage>
             </Link>
