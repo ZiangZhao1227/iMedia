@@ -17,7 +17,7 @@ export const ShareTop = styled.div`
   align-items: center;
 `;
 
-export const ShareBottom = styled.div``;
+export const ShareBottom = styled.form``;
 
 export const ShareProfileImage = styled.img`
   width: 50px;
@@ -43,7 +43,7 @@ export const ShareOptions = styled.div`
   justify-content: space-evenly;
 `;
 
-export const ShareOption = styled.div`
+export const ShareOption = styled.label`
   display: flex;
   align-items: center;
 `;
@@ -51,6 +51,7 @@ export const ShareOption = styled.div`
 export const ShareOptionText = styled.span`
   font-size: 16px;
   font-weight: 500;
+  cursor: pointer;
 `;
 
 export const ShareButton = styled.button`
@@ -65,4 +66,8 @@ export const ShareButton = styled.button`
     background-color: #d8829d;
     color: white;
   }
+`;
+
+export const UploadFile = styled.input`
+  display: none;
 `;

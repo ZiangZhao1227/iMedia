@@ -1,6 +1,6 @@
 import { MoreVert } from "@material-ui/icons";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 
@@ -24,6 +24,7 @@ import {
   PostCommentText,
 } from "./PostStyle";
 import { BASE_URL } from "../api/baseUrl";
+import { AuthContext } from "../context/AuthContext";
 
 interface PostProps {
   post: {
@@ -36,6 +37,7 @@ interface PostProps {
     comment: number;
     img: string;
     createdAt: Date;
+    _id: string;
   };
 }
 
@@ -44,6 +46,11 @@ const Post = ({ post }: PostProps) => {
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState<any>({});
   const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { user: currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    setIsLiked(post.likes.includes(currentUser._id));
+  }, [currentUser._id, post.likes]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -53,7 +60,18 @@ const Post = ({ post }: PostProps) => {
     fetchUser();
   }, [post.userId]);
 
+  const userRequest = axios.create({
+    baseURL: BASE_URL,
+    headers: {
+      token: `Bearer ${currentUser.accessToken}`,
+    },
+  });
+
   const likeHandler = () => {
+    try {
+      userRequest.put(`posts/${post._id}/like`);
+    } catch (error) {}
+
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };

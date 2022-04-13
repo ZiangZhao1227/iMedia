@@ -1,5 +1,6 @@
 import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
+import axios from "axios";
 
 import {
   ShareContainer,
@@ -13,12 +14,37 @@ import {
   ShareOptions,
   ShareOptionText,
   ShareButton,
+  UploadFile,
 } from "./ShareStyle";
 import { AuthContext } from "../context/AuthContext";
+import { BASE_URL } from "../api/baseUrl";
 
 const Share = () => {
   const { user } = useContext(AuthContext);
   const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+  const desc = useRef<any>();
+  const [file, setFile] = useState<any>(null);
+  const submitHandler = async (e: any) => {
+    e.preventDefault();
+    const newPost = {
+      userId: user._id,
+      desc: desc.current.value,
+    } as any;
+    if (file as any) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file as any);
+      newPost.img = fileName;
+      try {
+        await axios.post(`${BASE_URL}upload`, data);
+      } catch (err) {}
+    }
+    try {
+      await axios.post(`${BASE_URL}posts`, newPost);
+      window.location.reload();
+    } catch (err) {}
+  };
   return (
     <ShareContainer>
       <ShareWrapper>
@@ -30,17 +56,26 @@ const Share = () => {
                 : PublicFolder + "person/noAvatar.png"
             }
           ></ShareProfileImage>
-          <ShareInput placeholder="Anything interesting to share?"></ShareInput>
+          <ShareInput
+            ref={desc}
+            placeholder={"Anything interesting to share " + user.username + "?"}
+          ></ShareInput>
         </ShareTop>
         <ShareHr />
-        <ShareBottom>
+        <ShareBottom onSubmit={submitHandler}>
           <ShareOptions>
-            <ShareOption>
+            <ShareOption htmlFor="file">
               <PermMedia
                 htmlColor="tomato"
                 style={{ fontSize: "20px", marginRight: "5px" }}
               />
               <ShareOptionText>Photo or Video</ShareOptionText>
+              <UploadFile
+                type="file"
+                id="file"
+                accept=".png,.jpeg,.jpg"
+                onChange={(e: any) => setFile(e.target.files[0])}
+              ></UploadFile>
             </ShareOption>
             <ShareOption>
               <Label
@@ -63,7 +98,7 @@ const Share = () => {
               />
               <ShareOptionText>Feelings</ShareOptionText>
             </ShareOption>
-            <ShareButton>Share</ShareButton>
+            <ShareButton type="submit">Share</ShareButton>
           </ShareOptions>
         </ShareBottom>
       </ShareWrapper>
