@@ -40,11 +40,17 @@ const Profile = () => {
           <ProfileRightTop>
             <ProfileCover>
               <ProfileCoverImage
-                src={user.coverPicture || PublicFolder + "person/noCover.jpeg"}
+                src={
+                  user.coverPicture
+                    ? PublicFolder + user.coverPicture
+                    : PublicFolder + "person/noCover.jpeg"
+                }
               ></ProfileCoverImage>
               <ProfileUserImage
                 src={
-                  user.profilePicture || PublicFolder + "person/noAvatar.png"
+                  user.profilePicture
+                    ? PublicFolder + user.profilePicture
+                    : PublicFolder + "person/noAvatar.png"
                 }
               ></ProfileUserImage>
             </ProfileCover>
