@@ -22,7 +22,7 @@ const Login = () => {
   const navigate = useNavigate();
   const email = useRef<any>();
   const password = useRef<any>();
-  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  const { isFetching, dispatch } = useContext(AuthContext);
   const handleClick = (e: any) => {
     e.preventDefault();
     loginCall(

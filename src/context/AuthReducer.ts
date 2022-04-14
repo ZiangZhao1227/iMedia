@@ -1,4 +1,4 @@
-const AuthReducer = (state: any, action: { type: any; payload: any; }) => {
+const AuthReducer = (state: any, action: { type: any; payload: any }) => {
   switch (action.type) {
     case "LOGIN_START":
       return {
@@ -17,6 +17,24 @@ const AuthReducer = (state: any, action: { type: any; payload: any; }) => {
         user: null,
         isFetching: false,
         error: true,
+      };
+    case "FOLLOW":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          followings: [...state.user.followings, action.payload],
+        },
+      };
+    case "UNFOLLOW":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          followings: state.user.followings.filter(
+            (following: any) => following !== action.payload
+          ),
+        },
       };
     default:
       return state;

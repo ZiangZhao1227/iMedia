@@ -86,3 +86,21 @@ export const RightbarFollowingImage = styled.img`
 `;
 
 export const RightbarFollowingName = styled.span``;
+
+export const RightBarFollowButton = styled.button`
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #1872f2;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+`;

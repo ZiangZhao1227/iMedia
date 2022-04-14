@@ -1,6 +1,7 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Add, Remove } from "@material-ui/icons";
 
 import {
   BirthdayContainer,
@@ -20,14 +21,27 @@ import {
   RightbarFollowing,
   RightbarFollowingImage,
   RightbarFollowingName,
+  RightBarFollowButton,
 } from "./RightBarStyle";
 import { Users } from "../data";
 import OnlineFriend from "./OnlineFriend";
 import { BASE_URL } from "../api/baseUrl";
+import { AuthContext } from "../context/AuthContext";
 
 const RightBar = ({ user }: any) => {
   const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState<any>([]);
+  const { user: currentUser, dispatch } = useContext(AuthContext);
+  const [followed, setFollowed] = useState(
+    currentUser.followings.includes(user?.id)
+  );
+
+  const userRequest = axios.create({
+    baseURL: BASE_URL,
+    headers: {
+      token: `Bearer ${currentUser.accessToken}`,
+    },
+  });
 
   useEffect(() => {
     const getFriends = async () => {
@@ -40,6 +54,21 @@ const RightBar = ({ user }: any) => {
     };
     getFriends();
   }, [user]);
+
+  const handleClick = async () => {
+    try {
+      if (followed) {
+        await userRequest.put(`users/${user._id}/unfollow`);
+        dispatch({ type: "UNFOLLOW", payload: user._id });
+      } else {
+        await userRequest.put(`users/${user._id}/follow`);
+        dispatch({ type: "FOLLOW", payload: user._id });
+      }
+      setFollowed(!followed);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const HomeRightbar = () => {
     return (
@@ -64,6 +93,12 @@ const RightBar = ({ user }: any) => {
   const ProfileRightbar = () => {
     return (
       <Fragment>
+        {user.username !== currentUser.username && (
+          <RightBarFollowButton onClick={handleClick}>
+            {followed ? "Unfollow" : "Follow"}
+            {followed ? <Remove /> : <Add />}
+          </RightBarFollowButton>
+        )}
         <RightbarHeader>User Information</RightbarHeader>
         <RightbarInfo>
           <RightbarInfoItem>

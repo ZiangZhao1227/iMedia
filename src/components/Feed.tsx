@@ -17,9 +17,17 @@ const Feed = ({ username }: any) => {
         ? await axios.get(`${BASE_URL}posts/profile/${username}`)
         : await axios.get(`${BASE_URL}posts/timeline/${user._id}`);
       setPosts(
-        res.data.sort((p1:{ createdAt: string | number | Date; }, p2: { createdAt: string | number | Date; }) => {
-          return new Date(p2.createdAt).valueOf() - new Date(p1.createdAt).valueOf();
-        })
+        res.data.sort(
+          (
+            p1: { createdAt: string | number | Date },
+            p2: { createdAt: string | number | Date }
+          ) => {
+            return (
+              new Date(p2.createdAt).valueOf() -
+              new Date(p1.createdAt).valueOf()
+            );
+          }
+        )
       );
     };
     fetchPosts();
@@ -28,7 +36,7 @@ const Feed = ({ username }: any) => {
   return (
     <FeedContainer>
       <FeedWrapper>
-        <Share />
+      {(!username || username === user.username) && <Share />}
         {posts.map((postItem: any) => (
           <Post key={postItem._id} post={postItem} />
         ))}
