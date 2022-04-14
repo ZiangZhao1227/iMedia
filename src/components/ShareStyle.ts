@@ -5,7 +5,6 @@ export const ShareContainer = styled.div`
   -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
   width: 100%;
-  height: 170px;
 `;
 
 export const ShareWrapper = styled.div`
@@ -70,4 +69,14 @@ export const ShareButton = styled.button`
 
 export const UploadFile = styled.input`
   display: none;
+`;
+
+export const ShareImageContainer = styled.div`
+  padding: 0 20px 10px 20px;
+  position: relative;
+`;
+
+export const ShareImage = styled.img`
+  width: 100%;
+  object-fit: cover;
 `;
