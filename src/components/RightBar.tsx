@@ -1,4 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 import {
   BirthdayContainer,
@@ -21,9 +23,24 @@ import {
 } from "./RightBarStyle";
 import { Users } from "../data";
 import OnlineFriend from "./OnlineFriend";
+import { BASE_URL } from "../api/baseUrl";
 
 const RightBar = ({ user }: any) => {
   const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [friends, setFriends] = useState<any>([]);
+
+  useEffect(() => {
+    const getFriends = async () => {
+      try {
+        const list = await axios.get(`${BASE_URL}users/friends/${user._id}`);
+        setFriends(list.data.friendList);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getFriends();
+  }, [user]);
+
   const HomeRightbar = () => {
     return (
       <Fragment>
@@ -70,42 +87,24 @@ const RightBar = ({ user }: any) => {
         </RightbarInfo>
         <RightbarHeader>User Friends</RightbarHeader>
         <RightbarFollowings>
-          <RightbarFollowing>
-            <RightbarFollowingImage
-              src={`${PublicFolder}person/1.jpeg`}
-            ></RightbarFollowingImage>
-            <RightbarFollowingName>John Doe</RightbarFollowingName>
-          </RightbarFollowing>
-          <RightbarFollowing>
-            <RightbarFollowingImage
-              src={`${PublicFolder}person/2.jpeg`}
-            ></RightbarFollowingImage>
-            <RightbarFollowingName>John Doe</RightbarFollowingName>
-          </RightbarFollowing>
-          <RightbarFollowing>
-            <RightbarFollowingImage
-              src={`${PublicFolder}person/3.jpeg`}
-            ></RightbarFollowingImage>
-            <RightbarFollowingName>John Doe</RightbarFollowingName>
-          </RightbarFollowing>
-          <RightbarFollowing>
-            <RightbarFollowingImage
-              src={`${PublicFolder}person/4.jpeg`}
-            ></RightbarFollowingImage>
-            <RightbarFollowingName>John Doe</RightbarFollowingName>
-          </RightbarFollowing>
-          <RightbarFollowing>
-            <RightbarFollowingImage
-              src={`${PublicFolder}person/8.jpeg`}
-            ></RightbarFollowingImage>
-            <RightbarFollowingName>John Doe</RightbarFollowingName>
-          </RightbarFollowing>
-          <RightbarFollowing>
-            <RightbarFollowingImage
-              src={`${PublicFolder}person/9.jpeg`}
-            ></RightbarFollowingImage>
-            <RightbarFollowingName>John Doe</RightbarFollowingName>
-          </RightbarFollowing>
+          {friends.map((friend: any) => (
+            <Link
+              to={"/profile/" + friend.username}
+              style={{ textDecoration: "none" }}
+              key={friend._id}
+            >
+              <RightbarFollowing>
+                <RightbarFollowingImage
+                  src={
+                    friend.profilePicture
+                      ? PublicFolder + friend.profilePicture
+                      : PublicFolder + "person/noAvatar.png"
+                  }
+                ></RightbarFollowingImage>
+                <RightbarFollowingName>{friend.username}</RightbarFollowingName>
+              </RightbarFollowing>
+            </Link>
+          ))}
         </RightbarFollowings>
       </Fragment>
     );

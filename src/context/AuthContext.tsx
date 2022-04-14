@@ -16,7 +16,7 @@ export const AuthContextProvider = ({ children }: any) => {
     <AuthContext.Provider
       value={{
         user: {
-          profilePicture: "",
+          profilePicture: "person/9.jpeg",
           coverPicture: "",
           followers: [],
           followings: ["624c80dced7bd20016eea61d"],
