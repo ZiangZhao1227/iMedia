@@ -1,6 +1,6 @@
 # iMedia Client 
 
-#### A fullstack MERN online social app
+#### A fullstack MERN online social app. Currently implemented features: login, register, post a blog, upload an image and like a post and fetched all data from MongoDB with iMedia API. All the images that users uploaded will be saved in the API.
 
 ## Tech & libraries
 
@@ -14,6 +14,9 @@
 - styled-components
 - material-ui
 - Context-api
+
+## Frontend Server is deployed on Netlify
+https://imedia-app.netlify.app/
 
 ## Backend Server is deployed on Heroku
 
