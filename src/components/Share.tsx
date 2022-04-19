@@ -26,10 +26,10 @@ import {
 } from "./ShareStyle";
 import { AuthContext } from "../context/AuthContext";
 import { BASE_URL } from "../api/baseUrl";
+import { PublicFolder } from "../api/baseUrl";
 
 const Share = () => {
   const { user } = useContext(AuthContext);
-  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const desc = useRef<any>();
   const [file, setFile] = useState<any>(null);
   const submitHandler = async (e: any) => {

@@ -19,9 +19,9 @@ import {
   ProfileUserImage,
 } from "./ProfileStyle";
 import { BASE_URL } from "../api/baseUrl";
+import { PublicFolder } from "../api/baseUrl";
 
 const Profile = () => {
-  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState<any>({});
   const { username } = useParams();
   useEffect(() => {

@@ -18,10 +18,10 @@ import {
   TopbarImage,
 } from "./TopBarStyle";
 import { AuthContext } from "../context/AuthContext";
+import { PublicFolder } from "../api/baseUrl";
 
 const TopBar = () => {
   const { user } = useContext(AuthContext);
-  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <TopbarContainer>
       <TopbarLeft>

@@ -5,6 +5,7 @@ import {
   RightbarOnline,
   RightbarUsername,
 } from "./OnlineFriendStyle";
+import { PublicFolder } from "../api/baseUrl";
 
 export interface UserProps {
   user: {
@@ -15,7 +16,6 @@ export interface UserProps {
 }
 
 const OnlineFriend = ({ user }: UserProps) => {
-  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <RightbarFriend>
       <RightbarProfileImageContainer>

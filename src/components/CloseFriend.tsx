@@ -4,9 +4,9 @@ import {
   SidebarFriend,
 } from "./CloseFriendStyle";
 import { UserProps } from "./OnlineFriend";
+import { PublicFolder } from "../api/baseUrl";
 
 const CloseFriend = ({ user }: UserProps) => {
-  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <SidebarFriend>
       <SidebarFriendImage src={PublicFolder + user.profilePicture}></SidebarFriendImage>

@@ -27,9 +27,9 @@ import { Users } from "../data";
 import OnlineFriend from "./OnlineFriend";
 import { BASE_URL } from "../api/baseUrl";
 import { AuthContext } from "../context/AuthContext";
+import { PublicFolder } from "../api/baseUrl";
 
 const RightBar = ({ user }: any) => {
-  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState<any>([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [followed, setFollowed] = useState(
