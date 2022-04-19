@@ -15,6 +15,15 @@
 - material-ui
 - Context-api
 
+## Backend Server is deployed on Heroku
+
+> BASE URL
+> https://imedia-app.herokuapp.com/
+
+## iMedia server side
+
+https://github.com/ZiangZhao1227/iMedia-API
+
 ## Prerequisites
 
 NPM / Yarn and Node.js installed
